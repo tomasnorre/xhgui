@@ -54,6 +54,12 @@ $app->get('/run/callgraph/data', function () use ($di, $app) {
     $di['runController']->callgraphData();
 })->name('run.callgraph.data');
 
+// Run XML routes
+$app->get('/xml', function () use ($di, $app) {
+	$app->controller = $di['xmlController'];
+	$app->controller->index();
+})->name('xml');
+
 // Watch function routes.
 $app->get('/watch', function () use ($di, $app) {
     $app->controller = $di['watchController'];
@@ -90,4 +96,6 @@ $app->get('/waterfall', function () use ($di, $app) {
 $app->get('/waterfall/data', function () use ($di) {
     $di['waterfallController']->query();
 })->name('waterfall.data');
+
+
 
